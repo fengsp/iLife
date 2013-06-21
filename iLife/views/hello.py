@@ -19,7 +19,7 @@ def index():
 @hello.route('/hello/')
 @hello.route('/hello/<name>')
 def helloWorld(name=None):
-    return render_template('hello.html', name=name)
+    return render_template('hello/hello.html', name=name)
 
 
 @hello.route('/flash')
