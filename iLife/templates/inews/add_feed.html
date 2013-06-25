@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "_form.html" as feed_form %}
+
+{% block title %}加资讯源{% endblock %}
+
+{% block page_header %}
+	<div class="page-header">
+		<h1>新增RSS源</h1>
+	</div>
+{% endblock %}
+
+{% block content %}
+	{% if get_flashed_messages() %}
+	<div class="alert alert-error" style="width:550px">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>出错啦!</strong> {{ get_flashed_messages()[0] }}
+	</div>
+	{% endif %}
+	<form action="" method="post">
+		{{ feed_form.render(form) }}
+		<div class="actions">
+			<input type="submit" class="btn btn-success" value="加进去">
+		</div>
+	</form>
+{% endblock %}
+
+	

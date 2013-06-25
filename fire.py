@@ -5,6 +5,8 @@ import os, sys
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 from flask.ext.script import Manager, Server
 from iLife import app
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 manager = Manager(app)
 manager.add_command("runserver", Server(

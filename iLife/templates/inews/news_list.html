@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ "爱生活资讯" }}{% endblock %}
+
+{% block css %}
+<link href="{{ url_for('.static', filename='css/news_list.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block page_header %}
+<a href="/feed/add" class="btn btn-add">新增RSS源</a>
+<hr>
+{% endblock %}
+
+{% block content %}
+<div class="news-list">
+<ul>
+	{% for article in articles %}
+	<li>
+		<img src="{{ article.avatar }}" class="img-rounded"/>
+		<a href="{{ article.link }}" target="_blank" class="list-title">{{ article.title }}</a>
+		<p>{{ article.desc }}</p>
+		<span>{{ article.pubDate }} by {{ article.author }}</span>
+		<span class="label label-info">{{ article.get_cate() }}</span>
+		<a class="btn btn-primary btn-more" type="button" href="{{ article.link }}">阅读更多</a>
+		<hr>
+	</li>
+	{% endfor %}
+</ul>
+</div>
+{% endblock %}

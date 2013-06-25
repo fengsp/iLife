@@ -1,5 +1,5 @@
 """
-This view is used for learning use
+This view is used for test use
 """
 from flask import Module
 hello = Module(__name__)

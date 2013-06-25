@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{% block title %}爱生活随笔{% endblock %}
+
+{% block css %}
+<link href="{{ url_for('.static', filename='css/post_list.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block page_header %}
+<a href="/post/create" class="btn btn-create">写新随笔</a>
+{% endblock %}
+
 {% block content %}
     {% for post in posts %}
         <h2><a href="{{ post.get_absolute_url() }}">{{ post.title }}</a></h2>
@@ -7,7 +17,7 @@
 		<p>
 			{{	post.created_at.strftime('%H:%M %Y-%m-%d') }} |
 			{% with total=post.comments|length %}
-				{{ total }} comment {%- if total > 1 %}s{%- endif -%}
+				{{ total }} 条评论
 			{% endwith %}
 		</p>
 	{% endfor %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% import "tumblelog/comment_form.html" as comment_form %}
+{% import "iblog/comment_form.html" as comment_form %}
+
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block page_header %}
 	<div class="page-header">
@@ -11,8 +13,8 @@
 	<p>{{ post.body }}<p>
 	<p>{{ post.created_at.strftime('%H:%M %Y-%m-%d') }}</p>
 	<hr>
-	<h2>Comments</h2>
 	{% if post.comments %}
+	<h2>大家说:</h2>
 		{% for comment in post.comments %}
 			<p>{{ comment.body }}</p>
 			<p><strong>{{ comment.author }}</strong> <small>on {{ comment.created_at.strftime('%H:%M %Y-%m-%d') }}</small></p>
@@ -20,11 +22,11 @@
 			{% endfor %}
 	{% endif %}
 	<hr>
-	<h2>Add a comment</h2>
+	<h2>说下你的看法吧</h2>
 	<form action="/comment/{{ post.slug }}" method="post">
 		{{ comment_form.render(form) }}
 		<div class="actions">
-			<input type="submit" class="btn primary" value="comment">
+			<input type="submit" class="btn btn-primary" value="加上去">
 		</div>
 	</form>
 {% endblock %}

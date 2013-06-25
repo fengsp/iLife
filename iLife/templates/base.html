@@ -2,34 +2,51 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>iLife Tumblelog</title>
-	<link href="{{ url_for('.static', filename='bootstrap.css') }}" rel="stylesheet">
-<style>
-.content {
-	padding-top: 80px;
-}
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link href="{{ url_for('.static', filename='css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+	<link href="{{ url_for('.static', filename='css/base.css') }}" rel="stylesheet" media="screen">
+    <link rel="shortcut icon" href="{{ url_for('.static', filename='favicon.ico') }}">
+    {% block css %}{% endblock %}
 </style>
 </head>
 
 <body>
 	{%- block topbar -%}
-	<div class="topbar">
-		<div class="fill">
-			<div class="container">
-				<h2>
-					<a href="/" class="brand">iLife Tumblelog</a> <small>Starring Flask, MongoDB and MongoEngine</small>
-				</h2>
-			</div>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<a class="brand" id="brand-ilife" href="/">爱生活</a>
+			<ul class="nav">
+				<li><a href="/posts">随笔</a></li>
+				<li class="divider-vertical"></li>
+				<li><a href="#">电影</a></li>
+				<li class="divider-vertical"></li>
+				<li><a href="/news">资讯</a></li>
+				<li class="divider-vertical"></li>
+				<li><a href="#">Link</a></li>
+				<li class="divider-vertical"></li>
+				<li><a href="#">Link</a></li>
+			</ul>
 		</div>
 	</div>
 	{%- endblock -%}
 	
 	<div class="container">
-		<div class="content">
+		<div class="content content-ilife">
 			{% block page_header %}{% endblock %}
 			{% block content %}{% endblock %}
 		</div>
 	</div>
-	{% block js_footer %}{% endblock %}
+	
+	<div id="footer">
+		<p>
+	         Copyright © 2013 
+	 fsp Personal. All rights reserved.
+	      </p>
+	</div>
+	
+	<script src="{{ url_for('.static', filename='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('.static', filename='js/bootstrap.min.js') }}"></script>
 </body>
 </html>
