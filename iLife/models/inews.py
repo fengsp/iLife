@@ -3,7 +3,7 @@ import datetime
 from flask import url_for
 from iLife.models import db
 
-__all__ = ['Article', 'Feed']
+__all__ = ['Article', 'Feed', 'Mark']
 
 CATE = ((1, '情感'),
         (2, '互联网'),
@@ -34,3 +34,12 @@ class Feed(db.Document):
     avatar = db.StringField(verbose_name='头像链接:', max_length=255, required=True)
     author = db.StringField(verbose_name='作者:', max_length=255, required=True)
     source = db.URLField(verbose_name='RSS链接:', required=True, unique=True)
+    slug = db.StringField(max_length=255, required=True)
+
+    def get_cate(self):
+        cate_map = dict(CATE)
+        return cate_map[self.cate]
+
+class Mark(db.Document):
+    key = db.StringField(max_length=255, required=True)
+    markTime = db.DateTimeField(default=datetime.datetime.now, required=True)

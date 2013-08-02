@@ -19,9 +19,9 @@
 			<p>{{ comment.body }}</p>
 			<p><strong>{{ comment.author }}</strong> <small>on {{ comment.created_at.strftime('%H:%M %Y-%m-%d') }}</small></p>
 			{{ comment.text }}
+	        <hr>
 			{% endfor %}
 	{% endif %}
-	<hr>
 	<h2>说下你的看法吧</h2>
 	<form action="/comment/{{ post.slug }}" method="post">
 		{{ comment_form.render(form) }}

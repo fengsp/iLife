@@ -3,6 +3,10 @@
 
 {% block title %}加资讯源{% endblock %}
 
+{% block css %}
+<link href="{{ url_for('.static', filename='css/add_feed.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
 {% block page_header %}
 	<div class="page-header">
 		<h1>新增RSS源</h1>
@@ -22,6 +26,17 @@
 			<input type="submit" class="btn btn-success" value="加进去">
 		</div>
 	</form>
+	<div class="feeds-list">
+	<ul>
+		{% for feed in feeds %}
+		<li>
+			<img src="{{ feed.avatar }}" class="img-rounded"/>
+			<span>{{ feed.author }}</span>
+			<span class="label label-inverse">{{ feed.get_cate() }}</span>
+			<a href="{{ url_for('inews.delete_feed', slug=feed.slug)}}" class="btn btn-danger btn-delete">删除</a>
+		</li>
+		{% endfor %}
+	</ul>
 {% endblock %}
 
 	

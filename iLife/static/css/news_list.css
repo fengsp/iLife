@@ -1,6 +1,10 @@
 .btn-add {
 	margin-top: 30px;
 }
+.btn-update {
+	margin-top: 30px;
+	margin-left: 10px;
+}
 .news-list img {
 	float: left;
 	width: 70px;

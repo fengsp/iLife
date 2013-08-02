@@ -1,0 +1,17 @@
+.feeds-list li {
+	display: block;
+	list-style: none;
+	margin: 4px;
+	width: 600px;
+}
+.feeds-list ul {
+	margin-top: 50px;
+	margin-left: 0;
+}
+.feeds-list img {
+	width: 30px;
+	height: 30px;
+}
+.feeds-list .btn-delete {
+	float: right;
+}

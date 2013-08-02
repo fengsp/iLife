@@ -16,7 +16,7 @@
 	{%- block topbar -%}
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
-			<a class="brand" id="brand-ilife" href="/">爱生活</a>
+			<a class="brand" id="brand-ilife" href="/">fsp</a>
 			<ul class="nav">
 				<li><a href="/posts">随笔</a></li>
 				<li class="divider-vertical"></li>
@@ -46,7 +46,11 @@
 	      </p>
 	</div>
 	
+	<a id="scrollUp" title="" style="position: fixed; z-index: 2147483647; display: block;"></a>
+	
 	<script src="{{ url_for('.static', filename='js/jquery.min.js') }}"></script>
 	<script src="{{ url_for('.static', filename='js/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('.static', filename='js/jquery.scrollUp.min.js') }}"></script>
+	<script src="{{ url_for('.static', filename='js/base.js') }}"></script>
 </body>
 </html>

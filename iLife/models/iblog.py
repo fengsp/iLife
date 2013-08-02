@@ -34,4 +34,4 @@ class Comment(db.EmbeddedDocument):
 
 class Counter(db.Document):
     key = db.StringField(required=True)
-    count = db.IntField(min_value=10000, required=True)
+    count = db.IntField(required=True)

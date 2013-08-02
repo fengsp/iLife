@@ -8,6 +8,8 @@
 
 {% block page_header %}
 <a href="/feed/add" class="btn btn-add">新增RSS源</a>
+<a href="/feed/update" class="btn btn-success btn-update">更新</a>
+<a href="/feed/mark" class="btn btn-warning btn-update">读完了</a>
 <hr>
 {% endblock %}
 
@@ -21,10 +23,12 @@
 		<p>{{ article.desc }}</p>
 		<span>{{ article.pubDate }} by {{ article.author }}</span>
 		<span class="label label-info">{{ article.get_cate() }}</span>
-		<a class="btn btn-primary btn-more" type="button" href="{{ article.link }}">阅读更多</a>
+		<a class="btn btn-primary btn-more" type="button" target="_blank" href="{{ article.link }}">阅读更多</a>
 		<hr>
 	</li>
 	{% endfor %}
 </ul>
+</div>
+
 </div>
 {% endblock %}

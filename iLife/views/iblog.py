@@ -7,7 +7,7 @@ from flask import render_template
 from flask import request, redirect, url_for
 from iLife.models.iblog import *
 from flask.ext.mongoengine.wtf import model_form
-
+from iLife.models import client
 
 @iblog.route('/posts')
 def post_list():
@@ -50,10 +50,11 @@ def add_post():
     if request.form:
         form = postForm(request.form)
         if form.validate():
-            Counter.objects(key='post').update_one(inc__count=1)
+            counter = client.ilife.command('findandmodify', 'counter', 
+               query={'key':'post'}, update={'$inc':{'count':1}}, new='true')
             post = Post()
             form.populate_obj(post)
-            slug = str(Counter.objects(key='post')[0].count)
+            slug = str(counter['value']['count'])
             post.slug = slug
             post.save()
             return redirect(url_for('iblog.post_detail', slug=slug))
