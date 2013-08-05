@@ -2,16 +2,16 @@
 
 {% block title %}{{ "爱生活资讯" }}{% endblock %}
 
-{% block css %}
-<link href="{{ url_for('.static', filename='css/news_list.css') }}" rel="stylesheet" media="screen">
-{% endblock %}
+{% block css -%}
+    <link href="{{ url_for('.static', filename='css/news_list.css') }}" rel="stylesheet" media="screen">
+{%- endblock %}
 
-{% block page_header %}
+{%- block page_header %}
 <a href="/feed/add" class="btn btn-add">新增RSS源</a>
 <a href="/feed/update" class="btn btn-success btn-update">更新</a>
 <a href="/feed/mark" class="btn btn-warning btn-update">读完了</a>
 <hr>
-{% endblock %}
+{%- endblock %}
 
 {% block content %}
 <div class="news-list">
@@ -20,7 +20,7 @@
 	<li>
 		<img src="{{ article.avatar }}" class="img-rounded"/>
 		<a href="{{ article.link }}" target="_blank" class="list-title">{{ article.title }}</a>
-		<p>{{ article.desc }}</p>
+		<p>{{ article.desc|truncate(140, True) }}</p>
 		<span>{{ article.pubDate }} by {{ article.author }}</span>
 		<span class="label label-info">{{ article.get_cate() }}</span>
 		<a class="btn btn-primary btn-more" type="button" target="_blank" href="{{ article.link }}">阅读更多</a>
@@ -28,7 +28,5 @@
 	</li>
 	{% endfor %}
 </ul>
-</div>
-
 </div>
 {% endblock %}
